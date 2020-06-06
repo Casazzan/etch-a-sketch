@@ -1,0 +1,10 @@
+.cell {
+    border-style: solid;
+    border-width: 1px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(16, 20px);
+    grid-template-rows: repeat(16, 20px);
+}
