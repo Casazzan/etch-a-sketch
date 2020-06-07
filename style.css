@@ -18,12 +18,12 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 10em;
+    font-size: 8em;
 }
 
 form {
     background-color: white;
-    width: 710px;
+    width: 610px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -32,11 +32,11 @@ form {
 
 label{
     margin-right: 1em;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 button {
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Architects Daughter', cursive;
 }
 
