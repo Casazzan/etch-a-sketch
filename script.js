@@ -1,4 +1,4 @@
-let numPixels = 600;
+let numPixels = 700;
 let currentMode;
 
 function getRandomStr() {

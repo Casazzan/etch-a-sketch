@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
-    <link rel = "stylesheet" href = "reset.css">
+    <link rel = "stylesheet" href = "resources/reset.css">
     <link rel = "stylesheet" href = "style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id = "grid-settings">
         <h1>Etch-a-Sketch</h1>
-        <button id = "reset-btn">Reset</button>
         <form>
             <input type= "radio" id = "black" name = "mode" value = "black" checked = >
             <label for ="black">Black</label>
@@ -20,6 +20,7 @@
             <label for ="gradient">Gradient</label>
             <input type= "radio" id = "eraser" name = "mode" value = "eraser">
             <label for ="eraser">Eraser</label>
+            <button type = "button" id = "reset-btn">Reset</button>
         </form>
     </div>
     <div id = "grid">

@@ -4,7 +4,51 @@
 }
 
 #grid {
+    background-color: white;
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(16, 20px);
     grid-template-rows: repeat(16, 20px);
 }
+
+body {
+    font-family: 'Architects Daughter', cursive;
+    background-image: url("resources/background.png");
+}
+
+h1 {
+    text-align: center;
+    font-size: 10em;
+}
+
+form {
+    background-color: white;
+    width: 710px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    margin-right: 1em;
+    font-size: 2em;
+}
+
+button {
+    font-size: 2em;
+    font-family: 'Architects Daughter', cursive;
+}
+
+label[for="random"] {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+label[for="gradient"] {
+    background-image: linear-gradient(to left, black, lightgray);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
