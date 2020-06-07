@@ -23,7 +23,7 @@ function getGradientStr(e) {
 
 function changeCell(e) {
     if(currentMode === 'eraser') {
-        e.target.style.backgroundColor = 'white';
+        e.target.style.backgroundColor = null;
         e.target.setAttribute('isFilled', 'f');
     }
     else if(e.target.getAttribute('isFilled') === 't') { //if isFilled and not erasing, return out
