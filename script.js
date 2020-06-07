@@ -1,7 +1,47 @@
-let numPixels = 960;
+let numPixels = 600;
+let currentMode;
+
+function getRandomStr() {
+    return 'rgb('+Math.floor(Math.random() * 256)+','
+            +Math.floor(Math.random() * 256)+','+Math.floor(Math.random() * 256) +')';
+}
+
+function getGradientStr(e) {
+    let currentRGB = e.target.style.backgroundColor;
+    if(!currentRGB) {
+        return 'rgb(225, 225, 225)';
+    }
+    else {
+        //adds 10% (25) darkness
+        newRGBValue = +currentRGB.substring(4,currentRGB.indexOf(',')) - 25;
+        if(newRGBValue <= 0) {
+            e.target.setAttribute('isFilled', 't');
+        }
+        return 'rgb('+newRGBValue+','+newRGBValue+','+newRGBValue+')';
+    }
+}
 
 function changeCell(e) {
-    e.target.style.backgroundColor = 'black';
+    if(currentMode === 'eraser') {
+        e.target.style.backgroundColor = 'white';
+        e.target.setAttribute('isFilled', 'f');
+    }
+    else if(e.target.getAttribute('isFilled') === 't') { //if isFilled and not erasing, return out
+        return;
+    }
+    else if(currentMode === 'black') {
+        e.target.style.backgroundColor = 'black';
+        e.target.setAttribute('isFilled', 't');
+    }
+    else if(currentMode === 'random') {
+        e.target.style.backgroundColor = getRandomStr();
+        e.target.setAttribute('isFilled', 't');
+    }
+    else {
+        //gradient- precondition: must be unfilled or of type gradient
+        e.target.style.backgroundColor = getGradientStr(e);
+    }
+
 }
 
 function removePreviousGrid() {
@@ -23,6 +63,7 @@ function resetGrid(numCells) {
         cell.classList.add('cell');
         cell.style.width = cellSize + "px";
         cell.style.height = cellSize + "px";
+        cell.setAttribute('isFilled', 'f');
         cell.addEventListener('mouseenter', changeCell);
 
         container.appendChild(cell);
@@ -31,8 +72,28 @@ function resetGrid(numCells) {
 }
 
 function resetButtonPressed() {
-    const numCells = +prompt('How many cells would ya like');
+    let numCells = +prompt('How many cells would ya like');
+    while(isNaN(numCells) || numCells > 100 || numCells <= 0) {
+        numCells = prompt('Invalid input, How many cells would ya like');
+    }
     resetGrid(numCells);
 }
-document.querySelector('#reset-btn').addEventListener('click', resetButtonPressed);
-resetGrid(16);
+
+function modeChangeHandler(e) {
+    currentMode = e.target.value;
+}
+
+function setUp() {
+    currentMode = 'black';
+
+    const radioBtns = document.getElementsByName("mode");
+    radioBtns.forEach(radioBtn => {
+        radioBtn.onclick = modeChangeHandler;
+    });
+    
+    
+    document.querySelector('#reset-btn').addEventListener('click', resetButtonPressed);
+    resetGrid(16);
+}
+
+setUp();
